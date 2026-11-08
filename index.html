@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi Counter 🍣</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background-decoration decoration1">🍥</div>
+    <div class="background-decoration decoration2">🍣</div>
+    <div class="background-decoration decoration3">🍙</div>
+    <div class="background-decoration decoration4">✨</div>
+
+    <main class="container">
+
+        <div class="top-label">♡ SUSHI LOVERS CLUB ♡</div>
+
+        <div class="sushi-icon">🍣</div>
+
+        <h1>Sushi Counter</h1>
+
+        <p class="subtitle">
+            Every sushi counts!
+        </p>
+
+        <div class="counter-box">
+
+            <p class="counter-label">TOTAL SUSHI EATEN</p>
+
+            <div class="number-wrapper">
+                <span id="count">0</span>
+            </div>
+
+            <p class="counter-caption">delicious pieces ♡</p>
+
+        </div>
+
+        <button id="plus" class="add-button">
+            <span>🍣</span>
+            ADD SUSHI
+            <span>＋</span>
+        </button>
+
+        <div class="message" id="message">
+            Let's eat some sushi!
+        </div>
+
+        <button id="reset" class="reset-button">
+            reset counter ↺
+        </button>
+
+        <div class="footer">
+            made with love & sushi ♡
+        </div>
+
+    </main>
+
+    <script>
+
+        let count = 0;
+
+        const display = document.getElementById("count");
+        const message = document.getElementById("message");
+        const button = document.getElementById("plus");
+
+        button.addEventListener("click", function() {
+
+            count++;
+
+            display.classList.remove("pop");
+
+            void display.offsetWidth;
+
+            display.textContent = count;
+
+            display.classList.add("pop");
+
+            if (count === 1) {
+                message.textContent = "First sushi! 🍣";
+            } 
+            else if (count === 5) {
+                message.textContent = "Sushi lover detected! 💗";
+            }
+            else if (count === 10) {
+                message.textContent = "10 sushi already?! 🌸";
+            }
+            else if (count === 20) {
+                message.textContent = "LEGENDARY SUSHI EATER! ⭐";
+            }
+            else if (count % 10 === 0) {
+                message.textContent = "Amazing! Keep going! 🎉";
+            }
+
+            createFloatingSushi();
+
+        });
+
+        document.getElementById("reset").addEventListener("click", function() {
+
+            count = 0;
+            display.textContent = count;
+            message.textContent = "Let's eat some sushi!";
+
+        });
+
+        function createFloatingSushi() {
+
+            const sushi = document.createElement("div");
+
+            sushi.className = "floating-sushi";
+            sushi.textContent = ["🍣", "🍙", "✨", "♡"][Math.floor(Math.random() * 4)];
+
+            sushi.style.left = Math.random() * 80 + 10 + "%";
+
+            document.body.appendChild(sushi);
+
+            setTimeout(() => {
+                sushi.remove();
+            }, 1200);
+
+        }
+
+    </script>
+
+</body>
+</html>
